@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8A282171284007E400EBE7D4 /* WorkoutDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A282170284007E400EBE7D4 /* WorkoutDetails.swift */; };
 		8AAD9F56283FE63200BF70C7 /* healthApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAD9F55283FE63200BF70C7 /* healthApp.swift */; };
 		8AAD9F58283FE63200BF70C7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAD9F57283FE63200BF70C7 /* ContentView.swift */; };
 		8AAD9F5A283FE63300BF70C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8AAD9F59283FE63300BF70C7 /* Assets.xcassets */; };
@@ -14,9 +15,11 @@
 		8AAD9F64283FE68900BF70C7 /* HealthStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAD9F63283FE68900BF70C7 /* HealthStore.swift */; };
 		8AAD9F69283FEF7700BF70C7 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AAD9F68283FEF7700BF70C7 /* HealthKit.framework */; };
 		8AAD9F6D283FF90800BF70C7 /* Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAD9F6C283FF90800BF70C7 /* Step.swift */; };
+		8AE257892841617800F1E0FE /* HeartRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE257882841617800F1E0FE /* HeartRate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8A282170284007E400EBE7D4 /* WorkoutDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutDetails.swift; sourceTree = "<group>"; };
 		8AAD9F52283FE63200BF70C7 /* health.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = health.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AAD9F55283FE63200BF70C7 /* healthApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = healthApp.swift; sourceTree = "<group>"; };
 		8AAD9F57283FE63200BF70C7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -27,6 +30,7 @@
 		8AAD9F66283FEF7700BF70C7 /* health.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = health.entitlements; sourceTree = "<group>"; };
 		8AAD9F68283FEF7700BF70C7 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		8AAD9F6C283FF90800BF70C7 /* Step.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step.swift; sourceTree = "<group>"; };
+		8AE257882841617800F1E0FE /* HeartRate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +70,7 @@
 				8AAD9F65283FE8D000BF70C7 /* Info.plist */,
 				8AAD9F55283FE63200BF70C7 /* healthApp.swift */,
 				8AAD9F57283FE63200BF70C7 /* ContentView.swift */,
+				8A282170284007E400EBE7D4 /* WorkoutDetails.swift */,
 				8AAD9F63283FE68900BF70C7 /* HealthStore.swift */,
 				8AAD9F59283FE63300BF70C7 /* Assets.xcassets */,
 				8AAD9F5B283FE63300BF70C7 /* Preview Content */,
@@ -93,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				8AAD9F6C283FF90800BF70C7 /* Step.swift */,
+				8AE257882841617800F1E0FE /* HeartRate.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -170,6 +176,8 @@
 				8AAD9F58283FE63200BF70C7 /* ContentView.swift in Sources */,
 				8AAD9F6D283FF90800BF70C7 /* Step.swift in Sources */,
 				8AAD9F64283FE68900BF70C7 /* HealthStore.swift in Sources */,
+				8A282171284007E400EBE7D4 /* WorkoutDetails.swift in Sources */,
+				8AE257892841617800F1E0FE /* HeartRate.swift in Sources */,
 				8AAD9F56283FE63200BF70C7 /* healthApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -306,13 +314,14 @@
 				INFOPLIST_FILE = health/Info.plist;
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "This App requires to access your health data";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "This App requires to access your health data";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -341,13 +350,14 @@
 				INFOPLIST_FILE = health/Info.plist;
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "This App requires to access your health data";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "This App requires to access your health data";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

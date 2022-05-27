@@ -9,48 +9,61 @@ import SwiftUI
 import HealthKit
 
 struct ContentView: View {
+    @State private var workouts: [HKWorkout] = []
+    
+    @State private var durationFormatter: DateComponentsFormatter = {
+        let formatter = DateComponentsFormatter()
+        formatter.allowedUnits = [.hour, .minute, .second]
+        formatter.zeroFormattingBehavior = .pad
+        return formatter
+    }()
+    
+    static let startStackDateFormat: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd MMM yyyy HH:mm:ss"
+        return formatter
+    }()
+    
+    static let endStackDateFormat: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm:ss"
+        return formatter
+    }()
+    
     private var healthStore: HealthStore?
-    @State private var steps: [Step] = []
+
     
     init() {
         healthStore = HealthStore()
     }
     
-    private func updateUIFromStatistics(_ statisticsCollection: HKStatisticsCollection) {
-        let startDate = Calendar.current.date(byAdding: .day, value: -7, to: Date())!
-        let endDate = Date()
-        statisticsCollection.enumerateStatistics(from: startDate, to: endDate) { (statistics, stop) in
-            let count = statistics.sumQuantity()?.doubleValue(for: .count())
-            let step = Step(count: Int(count ?? 0), date: statistics.startDate)
-            if step.count > 0 {
-                steps.append(step)
-            }
-        }
-    }
-    
     var body: some View {
         NavigationView {
-            List(steps, id: \.id) { step in
-                VStack(alignment: .leading) {
-                    Text("\(step.count)")
-                    Text(step.date, style: .date)
-                        .opacity(0.5)
+            List(workouts, id: \.self) { workout in
+                NavigationLink(destination: WorkoutDetails(workout: workout)) {
+                    HStack {
+                        Capsule()
+                                .frame(width: 4)
+                                .foregroundColor(.accentColor)
+                        VStack(alignment: .leading) {
+                            Text("\(workout.startDate, formatter: Self.startStackDateFormat) - \(workout.endDate, formatter: Self.endStackDateFormat)")
+                            Text("\(Measurement(value: workout.totalDistance?.doubleValue(for: .meter()) ?? 0, unit: UnitLength.meters).formatted(.measurement(width: .abbreviated, usage: .road, numberFormatStyle: .number.precision(.fractionLength(2))))) - \(durationFormatter.string(from: workout.duration) ?? "")")
+                        }
+                    }
                 }
             }
                 .onAppear {
                     if let healthStore = healthStore {
                         healthStore.requestAuthorization { success in
                             if success {
-                                healthStore.calculateSteps { statisticsCollection in
-                                    if let statisticsCollection = statisticsCollection {
-                                        updateUIFromStatistics(statisticsCollection)
-                                    }
+                                Task {
+                                    workouts = await healthStore.readWorkouts()!
                                 }
                             }
                         }
                     }
                 }
-                .navigationTitle("Sportdiary steps")
+                .navigationTitle("Running workouts")
         }
     }
 }
